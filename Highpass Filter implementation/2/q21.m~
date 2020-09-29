@@ -1,0 +1,18 @@
+fs = 1000;
+t = (0:1/fs:10)';
+f1 = 20;
+fc = 10*f1;
+wm = 2*pi*f1;
+plot(t,ydouble)
+yt = (1+0.5*cos(wm*t)).*cos(20*pi*fc*t);
+figure(2)
+% plot(t,ydouble)
+plot(t,yt)
+z = sqrt(yt.*yt+hilbert(yt).*hilbert(yt));
+z3 = sqrt(yt.*yt+myhilbert(t,yt).*myhilbert(t,yt));
+figure(3)
+plot(t,abs(z),t,abs(z3))
+z2 = sqrt(ydouble.*ydouble+hilbert(ydouble).*hilbert(ydouble));
+z4 = sqrt(ydouble.*ydouble+myhilbert(t,ydouble).*myhilbert(t,ydouble));
+figure(4)
+plot(t,abs(z2),t,abs(z4))
